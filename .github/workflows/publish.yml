@@ -21,11 +21,12 @@ jobs:
           - buildjet-4vcpu-ubuntu-2204
         include:
           - context: ./1.17.1/
-            tags: latest
-          - context: ./1.17.1/
-            tags: 1.17.1
+            tags: |
+              type=raw,value=1.17.1
+              type=raw,value=latest
           - context: ./1.17.0/
-            tags: 1.17.0
+            tags: |
+              type=raw,value=1.17.0
     runs-on: ${{ matrix.runs-on }}
     steps:
       - name: Checkout
@@ -35,8 +36,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY_IMAGE }}
-          tags: |
-            type=raw,value=${{ matrix.tags }}
+          tags: ${{ matrix.tags }}
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
