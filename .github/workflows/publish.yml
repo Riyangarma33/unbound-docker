@@ -23,23 +23,27 @@ jobs:
           - runs-on: buildjet-4vcpu-ubuntu-2204-arm
             context: ./1.17.1/
             digest_path: 1.17.1
+            platform: linux/arm64/v8
             tags: |
               type=raw,value=1.17.1
               type=raw,value=latest
           - runs-on: buildjet-4vcpu-ubuntu-2204
             context: ./1.17.1/
             digest_path: 1.17.1
+            platform: linux/amd64
             tags: |
               type=raw,value=1.17.1
               type=raw,value=latest
           - runs-on: buildjet-4vcpu-ubuntu-2204-arm
             context: ./1.17.0/
             digest_path: 1.17.0
+            platform: linux/arm64/v8
             tags: |
               type=raw,value=1.17.0
           - runs-on: buildjet-4vcpu-ubuntu-2204
             context: ./1.17.0/
             digest_path: 1.17.0
+            platform: linux/amd64
             tags: |
               type=raw,value=1.17.0
     runs-on: ${{ matrix.runs-on }}
@@ -66,7 +70,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: ${{ matrix.context }}
-          # platforms: ${{ matrix.platform }}
+          platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
       - name: Export Digest
