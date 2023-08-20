@@ -71,14 +71,14 @@ jobs:
           outputs: type=image,name=${{ env.REGISTRY_IMAGE }},push-by-digest=true,name-canonical=true,push=true
       - name: Export Digest
         run: |
-          mkdir -p /tmp/digests${{ matrix.digest_path }}
+          mkdir -p /tmp/digests/${{ matrix.digest_path }}
           digest="${{ steps.build.outputs.digest }}"
-          touch "/tmp/digests${{ matrix.digest_path }}/${digest#sha256:}"
+          touch "/tmp/digests/${{ matrix.digest_path }}/${digest#sha256:}"
       - name: Upload Digest
         uses: actions/upload-artifact@v3
         with:
           name: digests
-          path: /tmp/digests${{ matrix.digest_path }}/*
+          path: /tmp/digests/${{ matrix.digest_path }}/*
           if-no-files-found: error
           retention-days: 1
   Merge-Images:
