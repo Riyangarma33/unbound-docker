@@ -22,27 +22,27 @@ jobs:
         include:
           - runs-on: buildjet-4vcpu-ubuntu-2204-arm
             context: ./1.17.1/
-            digest_path: 1.17.1
+            # digest_path: 1.17.1
             platform: linux/arm64/v8
             tags: |
               type=raw,value=1.17.1
               type=raw,value=latest
           - runs-on: buildjet-4vcpu-ubuntu-2204
             context: ./1.17.1/
-            digest_path: 1.17.1
+            # digest_path: 1.17.1
             platform: linux/amd64
             tags: |
               type=raw,value=1.17.1
               type=raw,value=latest
           - runs-on: buildjet-4vcpu-ubuntu-2204-arm
             context: ./1.17.0/
-            digest_path: 1.17.0
+            # digest_path: 1.17.0
             platform: linux/arm64/v8
             tags: |
               type=raw,value=1.17.0
           - runs-on: buildjet-4vcpu-ubuntu-2204
             context: ./1.17.0/
-            digest_path: 1.17.0
+            # digest_path: 1.17.0
             platform: linux/amd64
             tags: |
               type=raw,value=1.17.0
