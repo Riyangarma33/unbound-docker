@@ -3,7 +3,7 @@ name: Publish With Single Worker
 on:
   push:
     branches:
-      - "main"
+      - "test"
     paths-ignore:
       - README.md
       - .github/workflows/publish_test.yml.BAK
